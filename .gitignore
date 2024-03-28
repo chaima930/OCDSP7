@@ -1,0 +1,14 @@
+#venv
+*.venv
+*.png
+
+
+#Excel files
+*.csv
+
+*.pyc
+.ipynb_checkpoints/
+__pycache__/
+.pytest_cache/
+.vscode/
+.DS_Store
