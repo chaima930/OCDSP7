@@ -3,7 +3,6 @@ import numpy as np
 import pickle
 from sklearn.preprocessing import  MinMaxScaler
 from lightgbm import LGBMClassifier
-
 app = Flask(__name__)
 
 #load models
