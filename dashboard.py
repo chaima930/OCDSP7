@@ -26,7 +26,7 @@ def get_prediction(data):
         return None, None
 
 # Load sample parquet data (replace this with your actual data loading)
-parquet_file = 'data/df_test.parquet'
+parquet_file = 'OCDSP7/data/df_test.parquet'
 table = pq.read_table(parquet_file)
 df = table.to_pandas()
 df['SK_ID_CURR'] = df['SK_ID_CURR'].astype(int).astype(str)
