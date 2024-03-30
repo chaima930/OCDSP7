@@ -1,6 +1,6 @@
 import unittest
 import json
-from api import app
+from OCDSP7.tests.api import app
 import pandas as pd
 import sklearn
 
