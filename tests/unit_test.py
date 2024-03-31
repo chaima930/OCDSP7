@@ -1,3 +1,4 @@
+import warnings
 import unittest
 import json
 from api import app
@@ -16,6 +17,8 @@ class FlaskAppTest(unittest.TestCase):
         self.assertEqual(response.data.decode('utf-8'), 'Welcome to the credit scoring api')
 
     def test_predict_endpoint(self):
+        warnings.filterwarnings("ignore", category=UserWarning)
+
         df_test = pd.read_parquet('./data/df_test.parquet')
         df_test = df_test.sample(n=1).drop(['SK_ID_CURR','index'], axis=1)
         df_test = {'df_test': df_test.values.tolist()}
