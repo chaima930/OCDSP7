@@ -21,11 +21,11 @@ def get_prediction(data):
 
         return prediction_result, prediction_score
 
-    except Exception as e:
+    except Exception as e :
         st.error(f"Error getting prediction: {e}")
         return None, None
 
-# Load sample parquet data (replace this with your actual data loading)
+# Load sample parquet data (replace this with your actual data loading
 parquet_file = 'OCDSP7/data/df_test.parquet'
 table = pq.read_table(parquet_file)
 df = table.to_pandas()
