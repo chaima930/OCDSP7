@@ -20,34 +20,34 @@ def get_prediction(data):
             prediction_result = 'Credit denied'
             return prediction_result, prediction_score
 
-    except Exception as e :
+    except Exception as e:
         st.error(f"Error getting prediction: {e}")
         return None, None
 
-# Charger les données parquet d'exemple
+# Load example parquet data
 parquet_file = 'OCDSP7/data/df_test.parquet'
 table = pq.read_table(parquet_file)
 df = table.to_pandas()
 df['SK_ID_CURR'] = df['SK_ID_CURR'].astype(str)
 
-# Application Streamlit
-st.title('Credit Scoring Prediction')
+# Streamlit application
+st.title('My Streamlit App - Selecting Client IDs')
 
-# Dropdown pour les IDs des clients sélectionnés
-selected_client_id = st.selectbox('Select Client ID', df['SK_ID_CURR'].unique())
+# Dropdown for selecting client IDs
+selected_client_id = st.selectbox('Select Client ID:', df['SK_ID_CURR'].unique())
 
-# Obtenir les données du client sélectionné
+# Get data of the selected client
 selected_client_data = df[df['SK_ID_CURR'] == selected_client_id]
 
-# Afficher les données du client sélectionné
+# Display data of the selected client
 st.write(selected_client_data)
 
-# Bouton pour déclencher la prédiction
+# Button to trigger prediction
 if st.button('Predict'):
-    # Obtenir la prédiction
+    # Get prediction
     prediction_result, prediction_score = get_prediction(selected_client_data)
     
-    # Afficher le résultat de la prédiction
+    # Display prediction result
     st.subheader('Prediction Result:')
     if prediction_result is not None:
         st.write(f"The credit status is: {prediction_result}")

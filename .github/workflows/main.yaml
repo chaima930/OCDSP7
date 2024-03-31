@@ -22,7 +22,7 @@ jobs:
 
     - name: Run flask api Tests using pytest
       run: |
-        pytest ./OCDSP7/tests/unit_test.py
+        pytest -m unittest discover -s ./tests -p 'unit_test.py' 
 
     - name: Login to Heroku
       uses: akhileshns/heroku-deploy@v3.12.12

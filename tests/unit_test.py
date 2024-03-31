@@ -19,7 +19,7 @@ class FlaskAppTest(unittest.TestCase):
     def test_predict_endpoint(self):
         warnings.filterwarnings("ignore", category=UserWarning)
 
-        df_test = pd.read_parquet('./OCDSP7/tests/unit_test.py')
+        df_test = pd.read_parquet('OCDSP7/data/df_test.parquet')
         df_test = df_test.sample(n=1).drop(['SK_ID_CURR'], axis=1)
         df_test = {'df_test': df_test.values.tolist()}
         headers = {'Content-Type': 'application/json'}
