@@ -22,8 +22,7 @@ jobs:
 
     - name: Run flask api Tests using pytest
       run: |
-    pytest unit_test.py
-  
+    pytest OCDSP7/tests/unit_test.py
  
 
     
