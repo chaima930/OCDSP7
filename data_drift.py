@@ -7,7 +7,7 @@ import numpy as np
 import time as time 
 
 
-df = pd.read_csv('data/df.csv', sep = ",")
+df = pd.read_csv('OCDSP7/data/df.csv', sep = ",")
 application_train = df.dropna(subset=['TARGET']).drop(columns=['SK_ID_CURR','TARGET'])
 application_test = df[df['TARGET'].isna()].drop(columns=['SK_ID_CURR','TARGET'])
 

@@ -1,7 +1,7 @@
 import warnings
 import unittest
 import json
-from OCDSP7.tests.api import app
+from api import app
 import pandas as pd
 import sklearn
 
