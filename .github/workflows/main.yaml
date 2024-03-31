@@ -22,6 +22,8 @@ jobs:
 
     - name: Run flask api Tests using pytest
       run: |
-        pytest -m unittest discover -s ./tests -p 'unit_test.py' 
+        pytest OCDSP7/tests -k 'unit_test.py'
+
+ 
 
     
