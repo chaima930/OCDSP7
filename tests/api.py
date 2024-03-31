@@ -40,4 +40,4 @@ def predict():
 
 if __name__ == '__main__':
     # run app in debug
-    app.run(port='5004')
+    app.run(port='5005',debug=True)

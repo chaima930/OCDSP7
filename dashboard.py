@@ -5,7 +5,7 @@ import pyarrow.parquet as pq
 
 # Function to make API request and get prediction
 def get_prediction(data):
-    api_url = "http://127.0.0.1:5004/predict"  # Update with your API URL
+    api_url = "http://127.0.0.1:5005/predict"  # Update with your API URL
     df_test = {'df_test': data.drop(columns=['SK_ID_CURR']).values.tolist()}
     response = requests.post(api_url, json=df_test)
 
