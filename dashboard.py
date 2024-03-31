@@ -18,39 +18,37 @@ def get_prediction(data):
             prediction_result = 'Credit accepted'
         else:
             prediction_result = 'Credit denied'
-
-        return prediction_result, prediction_score
+            return prediction_result, prediction_score
 
     except Exception as e :
         st.error(f"Error getting prediction: {e}")
         return None, None
 
-# Load sample parquet data (replace this with your actual data loading
+# Charger les données parquet d'exemple
 parquet_file = 'OCDSP7/data/df_test.parquet'
 table = pq.read_table(parquet_file)
 df = table.to_pandas()
-df['SK_ID_CURR'] = df['SK_ID_CURR'].astype(int).astype(str)
-df = df.drop('index', axis=1)
+df['SK_ID_CURR'] = df['SK_ID_CURR'].astype(str)
 
-# Streamlit app
-st.title('Credit Scoring Prediction Dashboard')
+# Application Streamlit
+st.title('Credit Scoring Prediction')
 
-# Dropdown for client IDs
-selected_client_id = st.selectbox('Select Client ID:', df['SK_ID_CURR'].unique())
+# Dropdown pour les IDs des clients sélectionnés
+selected_client_id = st.selectbox('Select Client ID', df['SK_ID_CURR'].unique())
 
-# Display selected client's data
-st.subheader('Selected Client Data:')
-selected_client_data = df.loc[df['SK_ID_CURR'] == selected_client_id]
+# Obtenir les données du client sélectionné
+selected_client_data = df[df['SK_ID_CURR'] == selected_client_id]
+
+# Afficher les données du client sélectionné
 st.write(selected_client_data)
 
-# Button to trigger prediction
+# Bouton pour déclencher la prédiction
 if st.button('Predict'):
-    # Make API request and get prediction
+    # Obtenir la prédiction
     prediction_result, prediction_score = get_prediction(selected_client_data)
-
-    # Display prediction result
+    
+    # Afficher le résultat de la prédiction
     st.subheader('Prediction Result:')
     if prediction_result is not None:
         st.write(f"The credit status is: {prediction_result}")
         st.write(f"The prediction score is: {prediction_score:.2%}")
-        
