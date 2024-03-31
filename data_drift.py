@@ -54,7 +54,7 @@ elapsed_time_fit = time.time() - start_time
 print(elapsed_time_fit)
 
 # Sauvegardez le rapport en tant que fichier HTML
-data_drift_report.save_html('data_drift_report_FULL_script.html')
+data_drift_report.save_html('data_drift.html')
 
 
 

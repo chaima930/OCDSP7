@@ -5,25 +5,28 @@ import pyarrow.parquet as pq
 
 # Function to make API request and get prediction
 def get_prediction(data):
-    api_url = "http://127.0.0.1:5005/predict"  # Update with your API URL
+    api_url = "http://127.0.0.1:5006/predict"  # Update with your API URL
     df_test = {'df_test': data.drop(columns=['SK_ID_CURR']).values.tolist()}
     response = requests.post(api_url, json=df_test)
 
     try:
         result = response.json()
-        prediction_score = result['prediction'][0]
-
-        # Classify as 'Credit accepted' if probability of class 0 is greater than 0.5
-        if prediction_score > 0.5:
-            prediction_result = 'Credit accepted'
-        else:
-            prediction_result = 'Credit denied'
+        # Vérifiez la structure de la réponse JSON
+        print("Response JSON:", result)
+        if 'prediction' in result:
+            prediction_score = result['prediction'][0]
+            # Classify as 'Credit accepted' if probability of class 0 is greater than 0.5
+            if prediction_score > 0.5:
+                prediction_result = 'Credit accepted'
+            else:
+                prediction_result = 'Credit denied'
             return prediction_result, prediction_score
-
+        else:
+            print("La clé 'prediction' n'est pas présente dans la réponse JSON.")
+            return None, None
     except Exception as e:
-        st.error(f"Error getting prediction: {e}")
+        print(f"Error getting prediction: {e}")
         return None, None
-
 # Load example parquet data
 parquet_file = 'OCDSP7/data/df_test.parquet'
 table = pq.read_table(parquet_file)
