@@ -4,12 +4,11 @@ from api import app
 import pandas as pd
 import sklearn
 
-
 class FlaskAppTest(unittest.TestCase):
 
     def setUp(self):
         app.testing = True
-        self.app = app.test_client()
+        self.app = app.test_client()    
 
     def test_home_page(self):
         response = self.app.get('/')
@@ -17,7 +16,7 @@ class FlaskAppTest(unittest.TestCase):
         self.assertEqual(response.data.decode('utf-8'), 'Welcome to the credit scoring api')
 
     def test_predict_endpoint(self):
-        df_test = pd.read_parquet('./OCDSP7/data/df_test.parquet')
+        df_test = pd.read_parquet('./data/df_test.parquet')
         df_test = df_test.sample(n=1).drop(['SK_ID_CURR','index'], axis=1)
         df_test = {'df_test': df_test.values.tolist()}
         headers = {'Content-Type': 'application/json'}
