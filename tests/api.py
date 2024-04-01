@@ -9,11 +9,11 @@ import os
 app = Flask(__name__)
 
 #load models
-with open('OCDSP7/data/model.pkl', 'rb') as file:
+with open('data/model.pkl', 'rb') as file:
     model = pickle.load(file)
 
 
-with open('OCDSP7/data/scaler.pkl', 'rb') as file:
+with open('data/scaler.pkl', 'rb') as file:
     scaler = pickle.load(file)
 
 @app.route('/')
