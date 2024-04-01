@@ -4,15 +4,16 @@ import numpy as np
 import pickle
 from sklearn.preprocessing import  MinMaxScaler
 from lightgbm import LGBMClassifier
+import os
 
 app = Flask(__name__)
 
 #load models
-with open('data/model.pkl', 'rb') as file:
+with open('OCDSP7/data/model.pkl', 'rb') as file:
     model = pickle.load(file)
 
 
-with open('data/scaler.pkl', 'rb') as file:
+with open('OCDSP7/data/scaler.pkl', 'rb') as file:
     scaler = pickle.load(file)
 
 @app.route('/')
@@ -39,4 +40,4 @@ def predict():
         return jsonify({'error': str(e)})
     
 if __name__ == '__main__':
-    app.run(port='5006')
+    app.run(port='5006') 

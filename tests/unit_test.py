@@ -1,7 +1,7 @@
 import warnings
 import unittest
 import json
-from tests.api import app
+from api import app
 import pandas as pd
 import sklearn
 
@@ -19,7 +19,7 @@ class FlaskAppTest(unittest.TestCase):
     def test_predict_endpoint(self):
         warnings.filterwarnings("ignore", category=UserWarning)
 
-        df_test = pd.read_parquet('./data/df_test.parquet')
+        df_test = pd.read_parquet('OCDSP7/data/df_test.parquet')
         df_test = df_test.sample(n=1).drop(['SK_ID_CURR','index'], axis=1)
         df_test = {'df_test': df_test.values.tolist()}
         headers = {'Content-Type': 'application/json'}
