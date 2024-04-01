@@ -28,7 +28,7 @@ def get_prediction(data):
         print(f"Error getting prediction: {e}")
         return None, None
 # Load example parquet data
-parquet_file = 'OCDSP7/data/df_test.parquet'
+parquet_file = './data/df_test.parquet'
 table = pq.read_table(parquet_file)
 df = table.to_pandas()
 df['SK_ID_CURR'] = df['SK_ID_CURR'].astype(str)
