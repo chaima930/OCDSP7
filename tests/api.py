@@ -4,7 +4,7 @@ import numpy as np
 import pickle
 from sklearn.preprocessing import  MinMaxScaler
 from lightgbm import LGBMClassifier
-import os
+
 
 app = Flask(__name__)
 
