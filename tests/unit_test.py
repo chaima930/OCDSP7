@@ -1,7 +1,7 @@
 import warnings
 import unittest
 import json
-from api import app
+from tests.api import app
 import pandas as pd
 import sklearn
 
