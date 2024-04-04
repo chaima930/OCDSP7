@@ -29,6 +29,7 @@ def get_prediction(data):
 parquet_file = 'data/df_test.parquet'
 table = pq.read_table(parquet_file)
 df = table.to_pandas()
+df['SK_ID_CURR'] = df['SK_ID_CURR'].astype(int)
 
 # Streamlit app
 st.title('Credit Scoring Prediction ')
